@@ -8,13 +8,20 @@ import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigB
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigBuilder.Resilience4JCircuitBreakerConfiguration;
 import org.springframework.cloud.client.circuitbreaker.Customizer;
 import org.springframework.cloud.gateway.config.GatewayResilience4JCircuitBreakerAutoConfiguration;
+import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.context.annotation.Bean;
+import reactor.core.publisher.Mono;
 
 @SpringBootApplication
 public class CloudGatewayApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CloudGatewayApplication.class, args);
+	}
+
+	@Bean
+	KeyResolver useKeySolver(){
+		return exchange -> Mono.just("userKey");
 	}
 
 	@Bean

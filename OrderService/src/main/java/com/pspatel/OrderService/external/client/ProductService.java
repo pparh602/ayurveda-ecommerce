@@ -17,7 +17,7 @@ public interface ProductService {
       @PathVariable("id") Long productId,
       @RequestParam Long quantity);
 
-  default void fallback(Exception e){
+  default ResponseEntity<Void> fallback(Exception e){
     throw new CustomException("Product Service is not available", "UNAVAILABLE",500);
   }
 

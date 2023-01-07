@@ -62,7 +62,7 @@ public class OrderServiceImpl implements OrderService {
       log.info("Payment done Successfully. Changing the Order status to PLACED");
       orderStatus = "PLACED";
     }catch (Exception e){
-      log.error("Error occurred in payment. Changing order status to FAILED");
+      log.error("Error occurred in payment. Changing order status to PAYMENT_FAILED");
       orderStatus = "PAYMENT_FAILED";
     }
 
